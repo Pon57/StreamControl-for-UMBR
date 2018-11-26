@@ -1,0 +1,23 @@
+	@font-face {
+            font-family: 'Gadugi';
+            src: url("Gadugi.woff") format("woff2");
+            font-weight: normal;
+        }
+        @font-face {
+            font-family: 'Gadugi';
+            src: url("Gadugi-Bold.woff") format("woff2");
+            font-weight: bold;
+        }
+        @font-face {
+            font-family: 'Mona';
+            src: url("mona.woff") format("woff2");
+            font-weight: normal;
+        }
+        @font-face {
+            
+		font-family: 'knockout68';
+            
+		src: url("fonts/knockout-htf68.woff"); 
+		format("woff2");
+        
+	}

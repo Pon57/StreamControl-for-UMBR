@@ -1,0 +1,61 @@
+<!DOCTYPE StreamControlLayout>
+<layout width="390" height="340" tabbed="1">
+ <toolBar>
+  <label>Language</label>
+  <comboBox id="language" width="50">
+    <comboItem value="eng" >ENG</comboItem>
+    <comboItem value="jp" >JP</comboItem>
+  </comboBox>
+ </toolBar>
+ <tab name="Match">
+  <label x="10" y="24" width="26" height="13">P1</label>
+  <label x="10" y="54" width="26" height="13">P2</label>
+  <label x="70" y="4" width="26" height="13">ENG</label>
+  <label x="170" y="4" width="26" height="13">JP</label>
+  <label x="220" y="4" width="70" height="13">Country/国</label>
+  <lineEdit id="pName1" x="30" y="20" width="100" height="20" dataSet="players.csv" />
+  <lineEdit id="pName1jp" x="130" y="20" width="100" height="20" dataSet="players.csv" dataField="2" master="pName1" />
+  <lineEdit id="pCountry1" x="230" y="20" width="40" height="20" dataSet="players.csv" dataField="3" master="pName1" />
+  <spinBox id="pScore1" x="270" y="20" width="40" height="22" maximum="999" />
+  <lineEdit id="pName2" x="30" y="50" width="100" height="20" dataSet="players.csv" />
+  <lineEdit id="pName2jp" x="130" y="50" width="100" height="20" dataSet="players.csv" dataField="2" master="pName2" />
+  <lineEdit id="pCountry2" x="230" y="50" width="40" height="20" dataSet="players.csv" dataField="3" master="pName2" />
+  <spinBox id="pScore2" x="270" y="50" width="40" height="22" maximum="999" />  <button type="reset" x="310" y="20" width="30" height="23" tooltip="Clear Player 1 fields" id="clear1" reset="pName1,pName1jp,pScore1,pCountry1">Clear</button>
+  <button type="reset" x="340" y="20" width="30" height="23" tooltip="Reset the Scores" id="reset" reset="pScore1,pScore2">Reset</button>
+  <button type="reset" x="310" y="50" width="30" height="23" tooltip="Clear Player 2 fields" id="clear2" reset="pName2,pName2jp,pScore2,pCountry2">Clear</button>
+  <button type="swap" x="340" y="50" width="30" height="23" tooltip="Swap the Scores" id="swap" swapSet1="pName1,pName1jp,pScore1,pCountry1" swapSet2="pName2,pName2jp,pScore2,pCountry2">Swap</button>
+
+  <label x="30" y="86" width="46" height="13">Stage</label>
+  <lineEdit id="stage" x="30" y="100" width="300" height="20" />
+  <button type="timestamp" x="10" y="130" width="360" height="23" tooltip="Show Sponsors" id="sponsorts" saveonclick="1">Sponsors</button>
+ </tab>
+ <tab name="l3rds">
+  <tabSet x="0" y="0" width="390" height="300">
+   <tab name="l3rd1">
+    <label x="10" y="14" width="46" height="13">Line 1</label>
+    <label x="10" y="34" width="46" height="13">Line 2</label>
+    <lineEdit id="l3rd1a" x="60" y="10" width="300" height="20" dataSet="l3rds.csv" />
+    <lineEdit id="l3rd1b" x="60" y="30" width="300" height="20" dataSet="l3rds.csv" dataField="2" master="l3rd1a" />
+   </tab>
+   <tab name="l3rd2">
+    <label x="10" y="14" width="46" height="13">Line 1</label>
+    <label x="10" y="34" width="46" height="13">Line 2</label>
+    <lineEdit id="l3rd2a" x="60" y="10" width="300" height="20" dataSet="l3rds.csv" />
+    <lineEdit id="l3rd2b" x="60" y="30" width="300" height="20" dataSet="l3rds.csv" dataField="2" master="l3rd2a" />
+   </tab>
+   <tab name="l3rd3">
+    <label x="10" y="14" width="46" height="13">Line 1</label>
+    <label x="10" y="34" width="46" height="13">Line 2</label>
+    <lineEdit id="l3rd3a" x="60" y="10" width="300" height="20" dataSet="l3rds.csv" />
+    <lineEdit id="l3rd3b" x="60" y="30" width="300" height="20" dataSet="l3rds.csv" dataField="2" master="l3rd3a" />
+   </tab>
+   <tab name="l3rd4">
+    <label x="10" y="14" width="46" height="13">Line 1</label>
+    <label x="10" y="34" width="46" height="13">Line 2</label>
+    <lineEdit id="l3rd4a" x="60" y="10" width="300" height="20" dataSet="l3rds.csv" />
+    <lineEdit id="l3rd4b" x="60" y="30" width="300" height="20" dataSet="l3rds.csv" dataField="2" master="l3rd4a" />
+   </tab>
+  </tabSet>
+ </tab>
+
+</layout>
