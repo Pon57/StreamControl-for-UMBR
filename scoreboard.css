@@ -1,0 +1,164 @@
+body {
+    margin:0px;
+    background-color: rgba(255, 255, 255, 0);
+    /*background-image: url('imgs/scoreboard01.png');*/
+    background-repeat: no-repeat;
+	font-family: 'Gadugi','Mona';
+	font-weight: bold;
+	font-size: 14 px;
+    color:#050505;
+    overflow: hidden;
+    width:1280px;
+    height:48px;
+	-webkit-touch-callout: none;
+  	-webkit-user-select: none;
+}
+
+#container {
+	width:1280px;
+	height:48px;
+	position: absolute;
+	top:0;
+	left:0;
+}
+
+#board1 {
+        position:absolute; z-index: 4;
+        top:-50px;
+        left:0px;
+        width:1280px;
+        height:720px;
+        background-image:url('imgs/scoreboard01.png');
+        background-repeat: no-repeat;
+}
+
+#board2 {
+        position:absolute; z-index: 1;
+        top:-50px;
+        left:0px;
+        width:1280px;
+        height:720px;
+        /* background-image:url('imgs/scoreboard02_.png'); */
+        background-repeat: no-repeat;
+}
+#board3 {
+        position:absolute; z-index: 3;
+        top:0px;
+        left:200px;
+        width:1280px;
+        height:720px;
+        background-image:url('imgs/scoreboard03.png');
+        background-repeat: no-repeat;
+}
+#board4 {
+        position:absolute; z-index: 3;
+        top:0px;
+        left:-200px;
+        width:1280px;
+        height:720px;
+        background-image:url('imgs/scoreboard04.png');
+        background-repeat: no-repeat;
+}
+
+#flags {
+    position: absolute;
+    z-index: 3;
+    left: 197px;
+    top: 0px;
+    width: 886;
+    height: 31px;
+    -webkit-mask-image: url("imgs/flagmask.png");
+    mask-image: url("imgs/flagmask.png");
+    /*background-image:url('imgs/flagmask.png');*/
+
+}
+
+#flag1 {
+    position: absolute;
+    z-index: 5;
+    width: 87px;
+    height: 31px;
+    top:0px;
+    left:0px;
+}
+
+#flag2 {
+    z-index: 5;
+    position: absolute;
+    width: 87px;
+    height: 32px;
+    top:0px;
+    right:0;
+}
+
+#score1 {
+    position: absolute;
+    z-index: 5;
+    width: 52px;
+    height: 25px;
+    left: 508px;
+    top: 0px;
+    text-align: center;
+    font-size: 25px;
+    color: #fff;
+}
+#score2 {
+    position: absolute;
+    z-index: 5;
+    width: 52px;
+    height: 25px;
+    right: 508px;
+    top: 0px;
+    text-align: center;
+    font-size: 25px;
+    color: #fff;
+}
+
+#player1 {
+    position: absolute;
+    z-index: 5;
+    width: 200px;
+    height: 30px;
+    left: 300px;
+    top: 3px;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+}
+#player2 {
+    position: absolute;
+    z-index: 5;
+    width: 200px;
+    height: 30px;
+    right: 300px;
+    top: 3px;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+}
+
+#scoreboardintro {
+    position: absolute;
+    top:0px;
+    left:0px;
+    width:1280px;
+    height:48px;
+}
+
+#stage {
+    position: absolute;
+    z-index: 5;
+    width: 170px;
+    height: 30px;
+    top: 5px;
+    left: 555px;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.hidden {
+	display: none;
+}
