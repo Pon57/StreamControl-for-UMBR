@@ -6,6 +6,11 @@
     <comboItem value="eng" >ENG</comboItem>
     <comboItem value="jp" >JP</comboItem>
   </comboBox>
+  <label>  Best of</label>
+  <comboBox id="bestOf" width="50">
+    <comboItem value="bo3" >3</comboItem>
+    <comboItem value="bo5" >5</comboItem>
+  </comboBox>
  </toolBar>
  <tab name="Match">
   <label x="10" y="24" width="26" height="13">P1</label>
