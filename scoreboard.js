@@ -125,25 +125,25 @@ function pollHandler() {
 function switchTagTwitter(){
     switch (currPlayerElement) {
         case 'pName':
-            currPlayerElement = 'pTwitter';
-            addPlayerElement = "";
+            if (scObj["pTwitter1"] || scObj["pTwitter2"]) {
+                currPlayerElement = 'pTwitter';
+            }
             break;
         case 'pTwitter':
             currPlayerElement = 'pName';
-            addPlayerElement = scObj['language'] == "eng" ? "" : "jp";
             break;
     }
-    if (scObj["pTwitter1"]) {
+    if (scObj["pTwitter1"] || (document.getElementById("player1").innerHTML != currPlayer1 && currPlayerElement == 'pName')) {
         TweenMax.to(document.getElementById("player1"),0.5,{opacity:0,ease:Quad.easeIn,onComplete: function() {
-            document.getElementById("player1").innerHTML = scObj[currPlayerElement + "1" + addPlayerElement].toString().toUpperCase();
+            document.getElementById("player1").innerHTML = scObj[currPlayerElement + "1"].toString().toUpperCase();
             textFit(document.getElementsByClassName('player1'), {minFontSize:14, maxFontSize: 20,multiLine: false});
         }});
         TweenMax.to(document.getElementById("player1"),0.5,{opacity:1,ease:Quad.easeOut,delay:0.5});
     }
     
-    if (scObj["pTwitter2"]) {
+    if (scObj["pTwitter2"] || (document.getElementById("player2").innerHTML != currPlayer2 && currPlayerElement == 'pName')) {
         TweenMax.to(document.getElementById("player2"),0.5,{opacity:0,ease:Quad.easeIn,onComplete: function() {
-            document.getElementById("player2").innerHTML = scObj[currPlayerElement + "2" + addPlayerElement].toString().toUpperCase();
+            document.getElementById("player2").innerHTML = scObj[currPlayerElement + "2"].toString().toUpperCase();
             textFit(document.getElementsByClassName('player2'), {minFontSize:14, maxFontSize: 20,multiLine: false});
         }});
         TweenMax.to(document.getElementById("player2"),0.5,{opacity:1,ease:Quad.easeOut,delay:0.5});
@@ -182,14 +182,9 @@ function update() {
 		document.getElementById("scoreboardintro").play();
         document.getElementById("scoreboardintro").onended = function() {};
         
-        if (scObj['language'] == 'eng') {
-            currPlayer1 = scObj["pName1"].toString().toUpperCase();
-            currPlayer2 = scObj["pName2"].toString().toUpperCase();
+        currPlayer1 = scObj["pName1"].toString().toUpperCase();
+        currPlayer2 = scObj["pName2"].toString().toUpperCase();
             
-        } else {
-            currPlayer1 = scObj["pName1jp"].toString().toUpperCase();
-            currPlayer2 = scObj["pName2jp"].toString().toUpperCase();
-        }
         document.getElementById("player1").innerHTML = currPlayer1;
         document.getElementById("player2").innerHTML = currPlayer2;
 
@@ -234,53 +229,29 @@ function update() {
 			}});
 			TweenMax.to(document.getElementById("flags"),1,{opacity:1,delay:1,onComplete:function(){animating--;}});
 		}
-		if (scObj['language'] == 'eng') {
-			if (currPlayer1 != scObj["pName1"].toString().toUpperCase() || currPlayer2 != scObj["pName2"].toString().toUpperCase()) {
-                animating++;
 
-    			TweenMax.to(document.getElementById("player1"),0.5,{x:"+50",opacity:0,ease:Quad.easeIn,onComplete: function() {
-                    document.getElementById("player1").innerHTML = scObj["pName1"].toString().toUpperCase();
-                    textFit(document.getElementsByClassName('player1'), {minFontSize:14, maxFontSize: 20,multiLine: false});
-                    currPlayer1 = scObj["pName1"].toString().toUpperCase();
-                }});
-                TweenMax.to(document.getElementById("player1"),0.5,{x:"-0",opacity:1,ease:Quad.easeOut,delay:0.5});
+		if (currPlayer1 != scObj["pName1"].toString().toUpperCase() || currPlayer2 != scObj["pName2"].toString().toUpperCase()) {
+            animating++;
 
-    			TweenMax.to(document.getElementById("player2"),0.5,{x:"-50",opacity:0,ease:Quad.easeIn,onComplete: function() {
-                    document.getElementById("player2").innerHTML = scObj["pName2"].toString().toUpperCase();
-                    textFit(document.getElementsByClassName('player2'), {minFontSize:14, maxFontSize: 20,multiLine: false});
-                    currPlayer2 = scObj["pName2"].toString().toUpperCase();
-                }});
-                TweenMax.to(document.getElementById("player2"),0.5,{x:"+0",opacity:1,ease:Quad.easeOut,delay:0.5,onComplete:function(){
-                    animating--;
-                }});
+    		TweenMax.to(document.getElementById("player1"),0.5,{x:"+50",opacity:0,ease:Quad.easeIn,onComplete: function() {
+                currPlayer1 = scObj["pName1"].toString().toUpperCase();
+                document.getElementById("player1").innerHTML = currPlayer1;
+                textFit(document.getElementsByClassName('player1'), {minFontSize:14, maxFontSize: 20,multiLine: false});
+            }});
+            TweenMax.to(document.getElementById("player1"),0.5,{x:"-0",opacity:1,ease:Quad.easeOut,delay:0.5});
 
-                switchCount = 0;
-                currPlayerElement = "pName";
-    		}
-        } else {
-            if (currPlayer1 != scObj["pName1jp"].toString().toUpperCase() || currPlayer2 != scObj["pName2jp"].toString().toUpperCase()) {
-                animating++;
+    		TweenMax.to(document.getElementById("player2"),0.5,{x:"-50",opacity:0,ease:Quad.easeIn,onComplete: function() {
+                currPlayer2 = scObj["pName2"].toString().toUpperCase();
+                document.getElementById("player2").innerHTML = currPlayer2;
+                textFit(document.getElementsByClassName('player2'), {minFontSize:14, maxFontSize: 20,multiLine: false});
+            }});
+            TweenMax.to(document.getElementById("player2"),0.5,{x:"+0",opacity:1,ease:Quad.easeOut,delay:0.5,onComplete:function(){
+                animating--;
+            }});
 
-                TweenMax.to(document.getElementById("player1"),0.5,{x:"+50",opacity:0,ease:Quad.easeIn,onComplete: function() {
-                    document.getElementById("player1").innerHTML = scObj["pName1jp"].toString().toUpperCase();
-                    textFit(document.getElementsByClassName('player1'), {minFontSize:14, maxFontSize: 20,multiLine: false});
-                    currPlayer1 = scObj["pName1jp"].toString().toUpperCase();
-                }});
-                TweenMax.to(document.getElementById("player1"),0.5,{x:"-0",opacity:1,ease:Quad.easeOut,delay:0.5});
-
-                TweenMax.to(document.getElementById("player2"),0.5,{x:"-50",opacity:0,ease:Quad.easeIn,onComplete: function() {
-                    document.getElementById("player2").innerHTML = scObj["pName2jp"].toString().toUpperCase();
-                    textFit(document.getElementsByClassName('player2'), {minFontSize:14, maxFontSize: 20,multiLine: false});
-                    currPlayer2 = scObj["pName2jp"].toString().toUpperCase();
-                }});
-                TweenMax.to(document.getElementById("player2"),0.5,{x:"+0",opacity:1,ease:Quad.easeOut,delay:0.5,onComplete:function(){
-                    animating--;
-                }});
-
-                switchCount = 0;
-                currPlayerElement = "pName";
-            }
-        }
+            switchCount = 0;
+            currPlayerElement = "pName";
+    	}
 
         if (currScore1 != scObj["pScore1"].toString() || currBestOf != scObj["bestOf"]) {
             animating++;
@@ -309,7 +280,7 @@ function update() {
         if (document.getElementById('stage').innerHTML != scObj['stage']) {
             animating++;
             TweenMax.to(document.getElementById('stage'),0.5,{opacity:0,ease:Quad.easeIn,onComplete: function() {
-            document.getElementById('stage').innerHTML = scObj['stage'];
+                document.getElementById('stage').innerHTML = scObj['stage'];
                 textFit(document.getElementsByClassName('stage'), {minFontSize:10, maxFontSize: 14,multiLine: false});
             }});
             TweenMax.to(document.getElementById('stage'),0.5,{opacity:1,delay:0.5,ease:Quad.easeOut,onComplete: function(){
