@@ -91,23 +91,12 @@ body {
     right:0;
 }
 
-/*#score1 {
-    position: absolute;
-    z-index: 5;
-    width: 52px;
-    height: 25px;
-    left: 508px;
-    top: 0px;
-    text-align: center;
-    font-size: 25px;
-    color: #fff;
-}*/
 #score1 {
     position: absolute;
     z-index: 5;
     width: 52px;
     height: 25px;
-    left: 505px;
+    left: 503px;
     top: 6px;
     text-align: center;
     font-size: 25px;
@@ -118,7 +107,7 @@ body {
     z-index: 5;
     width: 52px;
     height: 25px;
-    right: 509px;
+    right: 507px;
     top: 10px;
     text-align: center;
     font-size: 25px;
@@ -168,7 +157,7 @@ body {
     font-weight: normal;
     text-align: center;
     text-transform: uppercase;
-    color: #fff;
+    color: #000;
 }
 
 .hidden {
