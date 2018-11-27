@@ -96,8 +96,8 @@ body {
     z-index: 5;
     width: 52px;
     height: 25px;
-    left: 508px;
-    top: 0px;
+    left: 503px;
+    top: 6px;
     text-align: center;
     font-size: 25px;
     color: #fff;
@@ -107,11 +107,12 @@ body {
     z-index: 5;
     width: 52px;
     height: 25px;
-    right: 508px;
-    top: 0px;
+    right: 507px;
+    top: 10px;
     text-align: center;
     font-size: 25px;
     color: #fff;
+    transform: scale(1, -1);
 }
 
 #player1 {
@@ -156,7 +157,7 @@ body {
     font-weight: normal;
     text-align: center;
     text-transform: uppercase;
-    color: #fff;
+    color: #000;
 }
 
 .hidden {
