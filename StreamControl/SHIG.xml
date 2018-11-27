@@ -18,12 +18,12 @@
   <lineEdit id="pName1jp" x="130" y="20" width="100" height="20" dataSet="players.csv" dataField="2" master="pName1" />
   <lineEdit id="pTwitter1" x="230" y="20" width="100" height="20" dataSet="players.csv" dataField="2" master="pName1" />
   <lineEdit id="pCountry1" x="330" y="20" width="40" height="20" dataSet="players.csv" dataField="3" master="pName1" />
-  <spinBox id="pScore1" x="370" y="20" width="40" height="22" maximum="3" />
+  <spinBox id="pScore1" x="370" y="20" width="40" height="22" maximum="999" />
   <lineEdit id="pName2" x="30" y="50" width="100" height="20" dataSet="players.csv" />
   <lineEdit id="pName2jp" x="130" y="50" width="100" height="20" dataSet="players.csv" dataField="2" master="pName2" />
   <lineEdit id="pTwitter2" x="230" y="50" width="100" height="20" dataSet="players.csv" dataField="2" master="pName2" />
   <lineEdit id="pCountry2" x="330" y="50" width="40" height="20" dataSet="players.csv" dataField="3" master="pName2" />
-  <spinBox id="pScore2" x="370" y="50" width="40" height="22" maximum="3" />
+  <spinBox id="pScore2" x="370" y="50" width="40" height="22" maximum="999" />
   <button type="reset" x="410" y="20" width="30" height="23" tooltip="Clear Player 1 fields" id="clear1" reset="pName1,pName1jp,pTwitter1,pScore1,pCountry1">Clear</button>
   <button type="reset" x="440" y="20" width="30" height="23" tooltip="Reset the Scores" id="reset" reset="pScore1,pScore2">Reset</button>
   <button type="reset" x="410" y="50" width="30" height="23" tooltip="Clear Player 2 fields" id="clear2" reset="pName2,pName2jp,pTwitter2,pScore2,pCountry2">Clear</button>
