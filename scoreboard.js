@@ -7,6 +7,7 @@ var xhr = new XMLHttpRequest();
 
 var timestampOld=0;
 var timestamp=0;
+var cacheBusterValiable=Date.now();
 var cacheBuster=0;
 
 var firstupdate = true;
@@ -116,7 +117,7 @@ function init() {
 }
 
 function pollHandler() {
-	xhr.open('GET', "streamcontrol.json?test="+cacheBuster,true);
+	xhr.open('GET', "streamcontrol.json?"+cacheBusterValiable+"="+cacheBuster,true);
 	xhr.send();
 	cacheBuster++;
 }
