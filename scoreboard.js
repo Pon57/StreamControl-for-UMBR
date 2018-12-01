@@ -3,6 +3,8 @@ var App = new xjs.App();
 
 window.onload = init;
 
+var isXsplit = false;
+
 var xhr = new XMLHttpRequest();
 
 var timestampOld=0;
@@ -28,7 +30,6 @@ var currPlayerElement = "pName";
 var isPreview = false;
 
 function init() {
-
     //アニメーションは、基本init()内部で GSAP の TweenMax を用いて描写。
     xjs.ready().then(xjs.Source.getCurrentSource).then(function(curItem) {
         var sourceWindow = xjs.SourcePluginWindow.getInstance();
@@ -40,11 +41,9 @@ function init() {
 
         XJSitem = curItem;
 
-
         XJSitem.setBrowserCustomSize(xjs.Rectangle.fromDimensions(1280,48));
         XJSitem.setPosition(xjs.Rectangle.fromCoordinates(0,0,1,0.0666666666666667));
         XJSitem.setPositionLocked(true);
-
 
         XJSitem.getView().then(function(view) {
             console.log("view:" +view);
@@ -102,15 +101,15 @@ function init() {
 
     //真下の行は、Xsplit専用の式。Xsplitでhtmlを60fpsとするのに必要。
     //ブラウザで動作チェックする分には、コメントアウトして頂いて問題ナッシング
-    window.external.SetLocalProperty("prop:Browser60fps","1");
+    if (isXsplit) {
+        window.external.SetLocalProperty("prop:Browser60fps","1");
+    }
 
     //以下から普通に必要な式
-	xhr.overrideMimeType('application/json');
-
+    xhr.overrideMimeType('application/json');
+    
 	xhr.onreadystatechange = scLoaded;
-
 	pollHandler();
-
 	setInterval(function() {
 		pollHandler();
 	}, 500);
@@ -133,7 +132,7 @@ function switchTagTwitter(){
             currPlayerElement = 'pName';
             break;
     }
-    if (scObj["pTwitter1"] || (document.getElementById("player1").innerHTML != currPlayer1 && currPlayerElement == 'pName')) {
+    if (scObj["pTwitter1"] && currPlayerElement == 'pTwitter' || document.getElementById("player1").innerHTML != currPlayer1) {
         TweenMax.to(document.getElementById("player1"),0.5,{opacity:0,ease:Quad.easeIn,onComplete: function() {
             document.getElementById("player1").innerHTML = scObj[currPlayerElement + "1"].toString().toUpperCase();
             textFit(document.getElementsByClassName('player1'), {minFontSize:14, maxFontSize: 20,multiLine: false});
@@ -141,7 +140,7 @@ function switchTagTwitter(){
         TweenMax.to(document.getElementById("player1"),0.5,{opacity:1,ease:Quad.easeOut,delay:0.5});
     }
     
-    if (scObj["pTwitter2"] || (document.getElementById("player2").innerHTML != currPlayer2 && currPlayerElement == 'pName')) {
+    if (scObj["pTwitter2"] && currPlayerElement == 'pTwitter' || document.getElementById("player2").innerHTML != currPlayer2) {
         TweenMax.to(document.getElementById("player2"),0.5,{opacity:0,ease:Quad.easeIn,onComplete: function() {
             document.getElementById("player2").innerHTML = scObj[currPlayerElement + "2"].toString().toUpperCase();
             textFit(document.getElementsByClassName('player2'), {minFontSize:14, maxFontSize: 20,multiLine: false});
@@ -152,18 +151,17 @@ function switchTagTwitter(){
 }
 
 function scLoaded() {
-
+    
 	if (xhr.readyState === 4) {
-
+        
 		scObj = JSON.parse(xhr.responseText);
-
+        
 		timestampOld = timestamp;
 		timestamp = scObj["timestamp"];
 		//console.log(timestamp);
-
-		if (timestamp != timestampOld && animating == 0 && firstupdate == false) {
+        if (timestamp != timestampOld && animating == 0 || firstupdate) {
             update();
-        } else if(animating == 0 && firstupdate == false && switchCount > 10) {
+        } else if(animating == 0 && switchCount > 10) {
             switchTagTwitter();
         } else {
             switchCount++;
@@ -172,7 +170,7 @@ function scLoaded() {
 }
 
 function update() {
-
+    
 	var datetime = new Date();
 	var unixTime = Math.round(datetime.getTime()/1000);
 
