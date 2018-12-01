@@ -41,11 +41,9 @@ function init() {
 
         XJSitem = curItem;
 
-
         XJSitem.setBrowserCustomSize(xjs.Rectangle.fromDimensions(1280,48));
         XJSitem.setPosition(xjs.Rectangle.fromCoordinates(0,0,1,0.0666666666666667));
         XJSitem.setPositionLocked(true);
-
 
         XJSitem.getView().then(function(view) {
             console.log("view:" +view);
@@ -161,7 +159,7 @@ function scLoaded() {
 		timestampOld = timestamp;
 		timestamp = scObj["timestamp"];
 		//console.log(timestamp);
-        if (timestamp != timestampOld && animating == 0 || (firstupdate && isXsplit)) {
+        if (timestamp != timestampOld && animating == 0 || firstupdate) {
             update();
         } else if(animating == 0 && switchCount > 10) {
             switchTagTwitter();
