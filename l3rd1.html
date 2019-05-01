@@ -251,7 +251,7 @@
 			timestamp = scObj["timestamp"];
 			//console.log(timestamp);
 
-			if (timestamp != timestampOld && animating == 0 && firstupdate == false) {
+			if (timestamp != timestampOld && animating == 0) {
               update();
             }
 
@@ -263,19 +263,19 @@
 		if(firstupdate){
 
 			animating++;
-		document.getElementById('l3rdtxt1').style.opacity = 1;
-		document.getElementById('l3rdtxt2').style.opacity = 1;
+            document.getElementById('l3rdtxt1').style.opacity = 1;
+            document.getElementById('l3rdtxt2').style.opacity = 1;
 
-		TweenMax.set(document.getElementById('l3rdtxt1'),{x:"0"});
-		TweenMax.set(document.getElementById('l3rdtxt2'),{x:"0"});
+            TweenMax.set(document.getElementById('l3rdtxt1'),{x:"0"});
+            TweenMax.set(document.getElementById('l3rdtxt2'),{x:"0"});
 
-		document.getElementById('l3rdtxt1').innerHTML = scObj[l3rd1];
-		document.getElementById('l3rdtxt2').innerHTML = scObj[l3rd2];
+            document.getElementById('l3rdtxt1').innerHTML = scObj[l3rd1];
+            document.getElementById('l3rdtxt2').innerHTML = scObj[l3rd2];
 
-		TweenMax.from(document.getElementById('l3rdtxt1'),0.5,{x:"+30",opacity:0,ease:Quad.easeOut,delay:1.9});
-		TweenMax.from(document.getElementById('l3rdtxt2'),0.5,{x:"+30",opacity:0,ease:Quad.easeOut,delay:2,onComplete:function(){animating--;}});
+            TweenMax.from(document.getElementById('l3rdtxt1'),0.5,{x:"+30",opacity:0,ease:Quad.easeOut,delay:1.9});
+            TweenMax.from(document.getElementById('l3rdtxt2'),0.5,{x:"+30",opacity:0,ease:Quad.easeOut,delay:2,onComplete:function(){animating--;}});
 
-		setTimeout(function(){document.getElementById('c3rdIn').style.opacity=1;document.getElementById('c3rdIn').play();},200);
+            setTimeout(function(){document.getElementById('c3rdIn').style.opacity=1;document.getElementById('c3rdIn').play();},200);
 
 
 			document.getElementById("container").style.display="block";
